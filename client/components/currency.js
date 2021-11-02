@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { setCurrency } from '../redux/reducers/products'
 import { getTotalAmountBasket } from '../redux/reducers/basket'
-// import { setLogs } from '../redux/reducers/logsall'
+import { setLogs } from '../redux/reducers/logsall'
 
 const Currency = () => {
   const dispatch = useDispatch()
   const basket = useSelector((s) => s.basket.cards)
   const totalOrderCountBasket = useSelector((s) => s.basket.totalOrderCountBasket)
-  // const currencyName = useSelector((s) => s.products.currency.name)
+  const currencyName = useSelector((s) => s.products.currency.name)
 
   useEffect(() => {
     dispatch(getTotalAmountBasket())
@@ -19,7 +19,7 @@ const Currency = () => {
   const onClickCurrency = (e) => {
 
     dispatch(setCurrency(e.target.name))
-    // dispatch(setLogs(`change currency from ${currencyName} to ${e.target.name}`, +new Date()))
+    dispatch(setLogs(`change currency from ${currencyName} to ${e.target.name}`, +new Date()))
   }
 
   return (

@@ -3,7 +3,6 @@ import axios from 'axios'
 const GET_PRODUCTS = 'GET_PRODUCTS'
 const SET_CURRENCY = 'SET_CURRENCY'
 const SET_SORT = 'SET_SORT'
-const SET_LOGS = 'SET_LOGS'
 
 const InitialState = {
   productList: [],
@@ -14,8 +13,7 @@ const InitialState = {
   sort: {
     nameSort: '',
     direction: ''
-  },
-  logs: []
+  }
 }
 
 export default (state = InitialState, action) => {
@@ -45,12 +43,6 @@ export default (state = InitialState, action) => {
         direction: action.direction
       }
     }
-    case SET_LOGS: {
-      return {
-        ...state,
-        logs: action.data
-      }
-    }
     default:
       return state
   }
@@ -67,24 +59,14 @@ export function getProducts() {
 
 export function setCurrency(nameCurrency) {
   console.log('reducers nameCurrency', nameCurrency)
-  return (dispatch, getState) => {
-    const currencyOld = getState().products.currency.name
+  return (dispatch) => {
     const url = `api/v1/currency/${nameCurrency}`
     axios(url)
       .then(({ data }) => {
-        console.log('ffffffffff', data)
+        console.log('ffffffffff',data)
         dispatch({ type: SET_CURRENCY, name: nameCurrency, rate: data })
       })
       .catch((err) => err)
-
-      axios({
-        method: 'post',
-        url: 'api/v1/logs',
-        data: {
-          date: +new Date(),
-          title: `change currency from ${currencyOld} to ${nameCurrency}`
-        }
-      })
   }
 }
 

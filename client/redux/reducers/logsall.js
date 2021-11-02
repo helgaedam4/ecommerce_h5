@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const GET_LOGS = 'GET_LOGS'
-// const SET_LOGS = 'SET_LOGS'
+const SET_LOGS = 'SET_LOGS'
 
 const InitialState = {
   logs: []
@@ -15,12 +15,12 @@ export default (state = InitialState, action) => {
         logs: action.data
       }
     }
-    // case SET_LOGS: {
-    //   return {
-    //     ...state,
-    //     logs: action.data
-    //   }
-    // }
+    case SET_LOGS: {
+      return {
+        ...state,
+        logs: action.data
+      }
+    }
     default:
       return state
   }
@@ -36,24 +36,24 @@ export function getLogs() {
   }
 }
 
-// export function setLogs(title, date) {
-//   return () => {
-//     axios({
-//       method: 'post',
-//       url: 'api/v1/logs',
-//       data: {
-//         date,
-//         title
-//       }
-//     })
-//   }
-//   // return (dispatch, getState) => {
-//   //   const state = getState().logsall
+export function setLogs(title, date) {
+  return () => {
+    axios({
+      method: 'post',
+      url: 'api/v1/logs',
+      data: {
+        date,
+        title
+      }
+    })
+  }
+  // return (dispatch, getState) => {
+  //   const state = getState().logsall
 
-//   //   console.log('STATE ===',state)
-//   //   const oldLogs = state?.logs ? [...state.logs] : []
+  //   console.log('STATE ===',state)
+  //   const oldLogs = state?.logs ? [...state.logs] : []
 
-//   //   const logs = [...oldLogs, { title, date}]
-//   //   dispatch({ type: SET_LOGS, logs })
-//   // }
-// }
+  //   const logs = [...oldLogs, { title, date}]
+  //   dispatch({ type: SET_LOGS, logs })
+  // }
+}
