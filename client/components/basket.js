@@ -18,6 +18,7 @@ const Basket = () => {
 
   useEffect(() => {
     dispatch(getTotalAmountBasket())
+    dispatch(setLogs(`navigate to "/basket" page`, +new Date()))
   }, [basket, currencyRate])
 
 

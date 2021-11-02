@@ -5,6 +5,7 @@ import Header from './header'
 import Card from './card'
 // import Sort from './sort'
 import { getProducts } from '../redux/reducers/products'
+import { setLogs } from '../redux/reducers/logsall'
 
 const Main = () => {
   const productList = useSelector((s) => s.products.productList.slice(0, 10))
@@ -12,6 +13,7 @@ const Main = () => {
 
   useEffect(() => {
     dispatch(getProducts())
+    dispatch(setLogs(`navigate to "/" page`, +new Date()))
     // return () => {}
   }, [])
 

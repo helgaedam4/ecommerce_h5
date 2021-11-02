@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Header from './header'
 import HandSvg from './svg/hand'
 
-import { getLogs } from '../redux/reducers/logsall'
+import { getLogs, setLogs } from '../redux/reducers/logsall'
 
 const Logs = () => {
   const dispatch = useDispatch()
@@ -12,6 +12,7 @@ const Logs = () => {
 
   useEffect(() => {
     dispatch(getLogs())
+    dispatch(setLogs(`navigate to "/logs" page`, +new Date()))
     // return () => {}
   }, [])
 

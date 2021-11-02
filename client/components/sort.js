@@ -3,12 +3,14 @@ import { useDispatch } from 'react-redux'
 
 import { setSort } from '../redux/reducers/products'
 import { setSortBasket } from '../redux/reducers/basket'
+import { setLogs } from '../redux/reducers/logsall'
 
 const Sort = () => {
   const [togglePrice, setTogglePrice] = useState(false)
   const [toggleTitle, setToggleTitle] = useState(false)
   const [directionPrice, setDirectionPrice] = useState(1)
   const [directionTitle, setDirectionTitle] = useState(1)
+
   const dispatch = useDispatch()
 
   const onClickSort = (e) => {
@@ -17,12 +19,14 @@ const Sort = () => {
 
       dispatch(setSortBasket(e.target.name, directionPrice))
       dispatch(setSort(e.target.name, directionPrice))
+       dispatch(setLogs(`sort by ${e.target.name}`, +new Date()))
     }
     if (e.target.name === 'title') {
       setDirectionTitle(toggleTitle ? 1 : 2)
 
       dispatch(setSortBasket(e.target.name, directionTitle))
       dispatch(setSort(e.target.name, directionTitle))
+      dispatch(setLogs(`sort by ${e.target.name}`, +new Date()))
     }
     setTogglePrice(!togglePrice)
     setToggleTitle(!toggleTitle)
