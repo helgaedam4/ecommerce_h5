@@ -10,6 +10,10 @@ import cookieParser from 'cookie-parser'
 import config from './config'
 import Html from '../client/html'
 
+import products from './handlers/products'
+import logs from './handlers/logs'
+import currency from './handlers/currency'
+
 const Root = () => ''
 
 try {
@@ -40,6 +44,11 @@ const middleware = [
 ]
 
 middleware.forEach((it) => server.use(it))
+
+server.get('/api/v1/products', products.get)
+server.get('/api/v1/logs', logs.get)
+server.post('/api/v1/logs', logs.update)
+server.get('/api/v1/currency/:nameCurrency', currency.get)
 
 server.use('/api/', (req, res) => {
   res.status(404)
