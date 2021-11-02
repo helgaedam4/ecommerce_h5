@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { history } from '../redux'
 
 import Header from './header'
 import HandSvg from './svg/hand'
 
-import { getLogs, setLogs } from '../redux/reducers/logsall'
+import { getLogs, removeLogs } from '../redux/reducers/logsall'
 
 const Logs = () => {
   const dispatch = useDispatch()
@@ -12,7 +13,7 @@ const Logs = () => {
 
   useEffect(() => {
     dispatch(getLogs())
-    dispatch(setLogs(`navigate to "/logs" page`, +new Date()))
+    // dispatch(setLogs(`navigate to "/logs" page`, +new Date()))
     // return () => {}
   }, [])
 
@@ -21,6 +22,20 @@ const Logs = () => {
   return (
     <div>
       <Header />
+      <div>
+        <button
+          type="button"
+          id="add-name"
+          title="Add"
+          className="bg-pink-700 p-1 m-2 border rounded text-white"
+          onClick={() => {
+            dispatch(removeLogs())
+            history.push('/')
+          }}
+        >
+          Remove log-file
+        </button>
+      </div>
       {logs.length === 0 ? (
         <div className="flex flex-row text-pink-900 font-bolt p-1 m-2 justify-center h_auto w-auto">
           Logs is empty

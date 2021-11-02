@@ -47,13 +47,10 @@ export function setLogs(title, date) {
       }
     })
   }
-  // return (dispatch, getState) => {
-  //   const state = getState().logsall
+}
 
-  //   console.log('STATE ===',state)
-  //   const oldLogs = state?.logs ? [...state.logs] : []
-
-  //   const logs = [...oldLogs, { title, date}]
-  //   dispatch({ type: SET_LOGS, logs })
-  // }
+export function removeLogs() {
+  return () => {
+    axios.delete('api/v1/logs')
+  }
 }

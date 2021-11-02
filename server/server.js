@@ -48,6 +48,7 @@ middleware.forEach((it) => server.use(it))
 server.get('/api/v1/products', products.get)
 server.get('/api/v1/logs', logs.get)
 server.post('/api/v1/logs', logs.update)
+server.delete('/api/v1/logs', logs.del)
 server.get('/api/v1/currency/:nameCurrency', currency.get)
 
 server.use('/api/', (req, res) => {
