@@ -1,17 +1,12 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setCards, getTotalAmountBasket } from '../redux/reducers/basket'
+import { setLogs } from '../redux/reducers/logsall'
 
 const Card = ({ carddata }) => {
   const currencyName = useSelector((s) => s.products.currency.name)
   const currencyRate = useSelector((s) => s.products.currency.rate)
   const dispatch = useDispatch()
-
-  const onClickCard = () => {
-    dispatch(
-      setCards(carddata.id, carddata.image, carddata.title, carddata.price, 1),
-      getTotalAmountBasket())
-  }
 
   return (
     <div className="card1">
@@ -31,7 +26,13 @@ const Card = ({ carddata }) => {
           id="add-name"
           title="Add"
           className="bg-pink-700 p-1 m-2 border rounded text-white"
-          onClick={onClickCard}
+          onClick={() => {
+            dispatch(
+              setCards(carddata.id, carddata.image, carddata.title, carddata.price, 1),
+              getTotalAmountBasket()
+            )
+            dispatch(setLogs(`add ${carddata.title} to basket`, +new Date()))
+          }}
         >
           Add
         </button>

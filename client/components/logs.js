@@ -29,7 +29,7 @@ const Logs = () => {
         <table className="table-fixed  my-5 mx-auto w-3/4">
           <thead>
             <tr>
-              <th>Title</th>
+              <th>Action</th>
               <th>Date</th>
             </tr>
           </thead>

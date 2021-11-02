@@ -6,6 +6,7 @@ import HandSvg from './svg/hand'
 import RemoveSvg from './svg/remove'
 
 import { removeCard, getTotalAmountBasket} from '../redux/reducers/basket'
+import { setLogs } from '../redux/reducers/logsall'
 
 const Basket = () => {
   const dispatch = useDispatch()
@@ -64,7 +65,13 @@ const Basket = () => {
                       id="remove-name"
                       title="remove"
                       className=" bg-pink-700 p-1 m-2 border rounded text-white"
-                      onClick={() => dispatch(removeCard(it.id), getTotalAmountBasket())}
+                      onClick={() =>
+                        dispatch(
+                          removeCard(it.id),
+                          getTotalAmountBasket(),
+                          dispatch(setLogs(`remove ${it.title} from the basket`, +new Date()))
+                        )
+                      }
                     >
                       <RemoveSvg />
                     </button>
