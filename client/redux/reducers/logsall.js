@@ -27,10 +27,8 @@ export default (state = InitialState, action) => {
 }
 
 export function getLogs() {
-  console.log('LOGS = ')
   return (dispatch) => {
     axios('api/v1/logs').then(({ data }) => {
-      console.log('logs = ', data)
       dispatch({ type: GET_LOGS, data })
     })
   }

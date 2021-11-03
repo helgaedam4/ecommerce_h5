@@ -25,8 +25,6 @@ export default (state = InitialState, action) => {
       }
     }
     case SET_CURRENCY: {
-      console.log('SET_CURRENCY=', action.name)
-      console.log(action.rate)
       return {
         ...state,
         currency: {
@@ -51,19 +49,16 @@ export default (state = InitialState, action) => {
 export function getProducts() {
   return (dispatch) => {
     axios('api/v1/products').then(({ data }) => {
-      console.log('productList reducers = ', data)
       dispatch({ type: GET_PRODUCTS, data })
     })
   }
 }
 
 export function setCurrency(nameCurrency) {
-  console.log('reducers nameCurrency', nameCurrency)
   return (dispatch) => {
     const url = `api/v1/currency/${nameCurrency}`
     axios(url)
       .then(({ data }) => {
-        console.log('ffffffffff',data)
         dispatch({ type: SET_CURRENCY, name: nameCurrency, rate: data })
       })
       .catch((err) => err)

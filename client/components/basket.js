@@ -21,8 +21,6 @@ const Basket = () => {
     dispatch(setLogs(`navigate to "/basket" page`, +new Date()))
   }, [basket, currencyRate])
 
-
-  console.log('basket comp = ', basket)
   return (
     <div>
       <Header />

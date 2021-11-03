@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import Header from './header'
 import Card from './card'
-// import Sort from './sort'
 import { getProducts } from '../redux/reducers/products'
 import { setLogs } from '../redux/reducers/logsall'
 
@@ -20,9 +19,6 @@ const Main = () => {
   return (
     <div>
       <Header />
-      <div className="flex justify-between w-1/3 text-white">
-        {/* <Sort /> */}
-      </div>
       <div className="flex flex-wrap justify-evenly w-11/12">
         {productList.map((it) => {
           return (

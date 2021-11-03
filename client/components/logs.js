@@ -52,7 +52,7 @@ const Logs = () => {
           <tbody>
             {logs.map((it) => {
               return (
-                <tr key={it.title}>
+                <tr key={it.date}>
                   <td className="text-center">{it.title}</td>
                   <td className="text-center">{it.date}</td>
                 </tr>
