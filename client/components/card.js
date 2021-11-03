@@ -11,25 +11,26 @@ const Card = ({ carddata }) => {
 
   return (
     <div className="card1">
-      <img
-        className="card__image object-cover h-40 w-full"
-        src={carddata.image}
-        alt={carddata.title}
-      />
-      <div>
+      <div className="bg-pink-700 text-white w-50 text-center rounded">
+        <img
+          className="card__image object-cover h-40 w-full"
+          // className="card__image  h-40 w-50"
+          src={carddata.image}
+          alt={carddata.title}
+        />
+        {/* <div> */}
         <button
           type="button"
           id="add-name"
           title="Add"
-          className="bg-pink-700 p-1 m-2 border rounded text-white"
+          // className="bg-pink-700 text-white w-50"
           onClick={() => {
             dispatch(
-
               setCards(carddata.id, carddata.image, carddata.title, carddata.price, 1),
               getTotalAmountBasket()
             )
             dispatch(setLogs(`add ${carddata.title} to basket`, +new Date()))
-            dispatch(updateCountProducts(carddata.id,'+'))
+            dispatch(updateCountProducts(carddata.id, '+'))
           }}
         >
           Add
@@ -39,7 +40,9 @@ const Card = ({ carddata }) => {
       <div className="card__price">
         price: {(carddata.price * currencyRate).toFixed(2)} {currencyName}{' '}
       </div>
-      <div className="card__product-amount">count: {carddata?.count  && carddata.count !==0 ? carddata.count : null}</div>
+      <div className="card__product-amount">
+        count: {carddata?.count && carddata.count !== 0 ? carddata.count : null}
+      </div>
     </div>
   )
 }
