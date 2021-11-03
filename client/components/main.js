@@ -19,7 +19,7 @@ const Main = () => {
   return (
     <div>
       <Header />
-      <div className="flex flex-wrap justify-evenly w-11/12">
+      <div className="flex flex-wrap justify-evenly w-full">
         {productList.map((it) => {
           return (
             <div key={it?.id} className="flex-auto max-w-xs m-2">

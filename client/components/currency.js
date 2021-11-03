@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+
 import { useDispatch, useSelector } from 'react-redux'
 
 import { setCurrency } from '../redux/reducers/products'
@@ -9,7 +9,7 @@ import { setLogs } from '../redux/reducers/logsall'
 const Currency = () => {
   const dispatch = useDispatch()
   const basket = useSelector((s) => s.basket.cards)
-  const totalOrderCountBasket = useSelector((s) => s.basket.totalOrderCountBasket)
+
   const currencyName = useSelector((s) => s.products.currency.name)
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const Currency = () => {
             CAD
           </button>
         </div>
-        <div
+        {/* <div
           id="order-count"
           className="text-white hover:text-white hover:border-white flex flex-row"
         >
@@ -82,7 +82,7 @@ const Currency = () => {
             </svg>
           </Link>
           {totalOrderCountBasket !== 0 ? totalOrderCountBasket : null}
-        </div>
+        </div> */}
       </div>
     </div>
   )
