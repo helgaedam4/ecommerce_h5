@@ -21,7 +21,14 @@ export default {
   update: async (req, res) => {
     const resultRead = await readFile(`${__dirname}/logs.json`, { encoding: 'utf8' })
       .then((data) => JSON.parse(data))
-      .catch((err) => err)
+      .catch(async () => {
+        const resultEmptyArr = await writeFile(`${__dirname}/logs.json`, JSON.stringify([]), {
+          encoding: 'utf8'
+        })
+          .then((data) => JSON.parse(data))
+          .catch((err) => err)
+        return res.json(resultEmptyArr)
+      })
 
     const result = await writeFile(
       `${__dirname}/logs.json`,
