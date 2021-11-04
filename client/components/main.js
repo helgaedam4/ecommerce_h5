@@ -7,7 +7,7 @@ import { getProducts } from '../redux/reducers/products'
 import { setLogs } from '../redux/reducers/logsall'
 
 const Main = () => {
-  const productList = useSelector((s) => s.products.productList.slice(0, 10))
+  const productList = useSelector((s) => s.products.productList.slice(0, 16))
   const dispatch = useDispatch()
 
   useEffect(() => {
