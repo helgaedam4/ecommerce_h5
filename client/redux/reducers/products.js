@@ -72,7 +72,7 @@ export function getProducts() {
     const state = getState().products
     const productList = [...state.productList]
     if (productList.length === 0) {
-      axios('api/v1/products').then(({ data }) => {
+      axios('/api/v1/products').then(({ data }) => {
         dispatch({ type: GET_PRODUCTS, data })
       })
     }
@@ -82,7 +82,7 @@ export function getProducts() {
 
 export function setCurrency(nameCurrency) {
   return (dispatch) => {
-    const url = `api/v1/currency/${nameCurrency}`
+    const url = `/api/v1/currency/${nameCurrency}`
     axios(url)
       .then(({ data }) => {
         dispatch({ type: SET_CURRENCY, name: nameCurrency, rate: data })

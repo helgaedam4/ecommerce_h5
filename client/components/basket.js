@@ -72,7 +72,8 @@ const Basket = () => {
                           // dispatch(setLogs(`remove ${it.title} from the basket`, +new Date()))
                         )
                         dispatch(updateCountProducts(it.id, '-'))
-                        dispatch(setLogs(`remove ${it.title} from the basket`, +new Date()))}
+                        dispatch(setLogs(`remove ${it.title} from the basket`, +new Date()))
+                      }
                       }
                     >
                       <RemoveSvg />

@@ -28,7 +28,7 @@ export default (state = InitialState, action) => {
 
 export function getLogs() {
   return (dispatch) => {
-    axios('api/v1/logs').then(({ data }) => {
+    axios('/api/v1/logs').then(({ data }) => {
       dispatch({ type: GET_LOGS, data })
     })
   }
@@ -38,7 +38,7 @@ export function setLogs(title, date) {
   return () => {
     axios({
       method: 'post',
-      url: 'api/v1/logs',
+      url: '/api/v1/logs',
       data: {
         date,
         title
@@ -49,6 +49,6 @@ export function setLogs(title, date) {
 
 export function removeLogs() {
   return () => {
-    axios.delete('api/v1/logs')
+    axios.delete('/api/v1/logs')
   }
 }

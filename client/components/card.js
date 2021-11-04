@@ -10,7 +10,7 @@ const Card = ({ carddata }) => {
   const dispatch = useDispatch()
 
   return (
-    <div className="card1">
+    <div className="card1 flex flex-col">
       <div className=" w-50 rounded relative">
         {/* <div> */}
         <img
@@ -27,12 +27,11 @@ const Card = ({ carddata }) => {
             title="Add"
             // className="bg-pink-700 text-white w-50"
             onClick={() => {
-              dispatch(
-                setCards(carddata.id, carddata.image, carddata.title, carddata.price, 1),
-                getTotalAmountBasket()
-              )
-              dispatch(setLogs(`add ${carddata.title} to basket`, +new Date()))
+              dispatch(setCards(carddata.id, carddata.image, carddata.title, carddata.price, 1))
+              dispatch(getTotalAmountBasket())
+
               dispatch(updateCountProducts(carddata.id, '+'))
+              dispatch(setLogs(`add ${carddata.title} to basket`, +new Date()))
             }}
           >
             Add
