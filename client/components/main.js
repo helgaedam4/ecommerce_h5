@@ -23,7 +23,7 @@ const Main = () => {
         {productList.map((it) => {
           return (
             <div key={it?.id} className="flex-auto max-w-xs m-2">
-              <Card carddata={it}/>
+              <Card key={it?.id} carddata={it}/>
             </div>
           )
         })}

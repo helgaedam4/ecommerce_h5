@@ -10,7 +10,7 @@ const Card = ({ carddata }) => {
   const dispatch = useDispatch()
 
   return (
-    <div className="card1 flex flex-col">
+    <div key={carddata.id} className="card1 flex flex-col">
       {/* <div className=" w-50 rounded "> */}
       <div className="flex justify-center p-1  w-40  rounded">
         <img
