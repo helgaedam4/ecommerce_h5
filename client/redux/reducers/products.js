@@ -48,21 +48,17 @@ export default (state = InitialState, action) => {
 
 export function updateCountProducts(id, operator) {
   return (dispatch, getState) => {
+
     const state = getState().products
     const productList = [...state.productList]
-    console.log('updateCountProducts = ', productList)
+
     const data = productList.map((it) => {
-      console.log('updateCountProducts it.id= ', it.id)
-      console.log('updateCountProducts id= ', id)
       const count = it?.count ? it?.count : 0
       if (it.id === id) {
         return operator === '+' ? { ...it, count: count + 1 } : { ...it, count: count - 1 }
       }
       return { ...it }
-
-      // return it.id === id ? { ...it, count: count + 1 } : { ...it }
     })
-    console.log('updateCountProducts = ', data)
     dispatch({ type: GET_PRODUCTS, data })
   }
 }
@@ -71,6 +67,7 @@ export function getProducts() {
   return (dispatch, getState) => {
     const state = getState().products
     const productList = [...state.productList]
+
     if (productList.length === 0) {
       axios('/api/v1/products').then(({ data }) => {
         dispatch({ type: GET_PRODUCTS, data })
@@ -83,6 +80,7 @@ export function getProducts() {
 export function setCurrency(nameCurrency) {
   return (dispatch) => {
     const url = `/api/v1/currency/${nameCurrency}`
+
     axios(url)
       .then(({ data }) => {
         dispatch({ type: SET_CURRENCY, name: nameCurrency, rate: data })
@@ -94,6 +92,7 @@ export function setCurrency(nameCurrency) {
 export function setSort(nameSort, direction) {
   return (dispatch, getState) => {
     const state = getState().products
+    
     const productSortedList = [...state.productList].sort((a, b) => {
       if (nameSort === 'title') {
         if (direction === 1) {

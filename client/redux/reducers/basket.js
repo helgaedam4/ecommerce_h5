@@ -44,6 +44,7 @@ export default (state = InitialState, action) => {
 export function setSortBasket(nameSort, direction) {
   return (dispatch, getState) => {
     const state = getState().basket
+
     const cards = [...state.cards].sort((a, b) => {
       if (nameSort === 'title') {
         if (direction === 1) {
@@ -111,8 +112,10 @@ export function getTotalAmountBasket() {
     const state = getState().basket
     const stateCurrencyRate = getState().products.currency.rate
     const oldCards = state?.cards ? [...state.cards] : []
+
     let totalAmountBasket = 0
     let totalOrderCountBasket = 0
+    
     if (oldCards.length !== 0) {
       totalAmountBasket = oldCards.reduce((acc, card) => {
         return acc + card.price * card.amount * stateCurrencyRate

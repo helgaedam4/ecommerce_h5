@@ -13,11 +13,8 @@ const Logs = () => {
 
   useEffect(() => {
     dispatch(getLogs())
-    // dispatch(setLogs(`navigate to "/logs" page`, +new Date()))
     // return () => {}
   }, [])
-
-  console.log('LOGS COMPOTENT =', logs)
 
   return (
     <div>

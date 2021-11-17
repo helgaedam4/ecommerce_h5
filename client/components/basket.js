@@ -65,16 +65,13 @@ const Basket = () => {
                       id="remove-name"
                       title="remove"
                       className=" bg-pink-700 p-1 m-2 border rounded text-white"
-                      onClick={() =>
-                        {dispatch(
-                          removeCard(it.id),
-                          getTotalAmountBasket(),
-                          // dispatch(setLogs(`remove ${it.title} from the basket`, +new Date()))
-                        )
+                      onClick={() => {
+                        dispatch(removeCard(it.id))
+                        dispatch(getTotalAmountBasket())
                         dispatch(updateCountProducts(it.id, '-'))
                         dispatch(setLogs(`remove ${it.title} from the basket`, +new Date()))
-                      }
-                      }
+                        //   dispatch(dispatch(setLogs(`remove ${it.title} from the basket`, +new Dat())
+                      }}
                     >
                       <RemoveSvg />
                     </button>

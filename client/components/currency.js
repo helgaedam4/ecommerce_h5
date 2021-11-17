@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useCallback } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -9,18 +9,19 @@ import { setLogs } from '../redux/reducers/logsall'
 const Currency = () => {
   const dispatch = useDispatch()
   const basket = useSelector((s) => s.basket.cards)
-
   const currencyName = useSelector((s) => s.products.currency.name)
 
   useEffect(() => {
     dispatch(getTotalAmountBasket())
   }, [basket])
 
-  const onClickCurrency = (e) => {
-
-    dispatch(setCurrency(e.target.name))
-    dispatch(setLogs(`change currency from ${currencyName} to ${e.target.name}`, +new Date()))
-  }
+  const onClickCurrency = useCallback(
+    (e) => {
+      dispatch(setCurrency(e.target.name))
+      dispatch(setLogs(`change currency from ${currencyName} to ${e.target.name}`, +new Date()))
+    },
+    [currencyName]
+  )
 
   return (
     <div>
@@ -61,28 +62,6 @@ const Currency = () => {
             CAD
           </button>
         </div>
-        {/* <div
-          id="order-count"
-          className="text-white hover:text-white hover:border-white flex flex-row"
-        >
-          <Link to="/basket" title="Basket of products">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-10 w-10  p-1 m-2 "
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-            </svg>
-          </Link>
-          {totalOrderCountBasket !== 0 ? totalOrderCountBasket : null}
-        </div> */}
       </div>
     </div>
   )

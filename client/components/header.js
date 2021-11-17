@@ -8,10 +8,7 @@ const Header = () => {
   return (
     <nav className="bg-pink-900 p-2 flex flex-col">
       <div
-        className="flex flex-row 1
-      1
-      w-1/2 float-right justify-between "
-      >
+        className="flex flex-row 11 w-1/2 float-right justify-between">
         <div
           id="brand-name"
           className="text-white hover:text-white hover:border-white justify-between"
